@@ -340,4 +340,17 @@ ax_new3 = subplot(2, 2, 3); % Create the third subplot
 copyobj(get(ax3, 'Children'), ax_new3); % Copy all children objects from ax3 to the new axes
 text(0.8, 0.9, 'c)', 'Units', 'normalized', 'FontSize', 12, 'HorizontalAlignment', 'center');
 xlabel("$x_1$", 'FontSize', 14)
-ylabel("$x_2$", 'FontSize', 14); ylim(
+ylabel("$x_2$", 'FontSize', 14); ylim([-4 4])
+set(ax_new3, 'TickLabelInterpreter', 'latex'); % Set LaTeX font for tick labels
+set(get(gca,'ylabel'),'rotation',0)
+
+% Fourth subplot
+ax_new4 = subplot(2, 2, 4); % Create the fourth subplot
+copyobj(get(ax4, 'Children'), ax_new4); % Copy all children objects from ax4 to the new axes
+text(0.8, 0.9, 'd)', 'Units', 'normalized', 'FontSize', 12, 'HorizontalAlignment', 'center');
+xlabel("$x_1$", 'FontSize', 14)
+ylabel("$x_2$", 'FontSize', 14)
+set(ax_new4, 'TickLabelInterpreter', 'latex'); % Set LaTeX font for tick labels
+set(get(gca,'ylabel'),'rotation',0)
+
+sdf(5,'PowerPoint')
