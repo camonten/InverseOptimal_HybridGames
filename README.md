@@ -50,4 +50,4 @@ cd InverseOptimal_HybridGame
 3. To reproduce `Fig. 1` in the paper you should run `PhasePortraits.m`. The result should be the following:
 <img src="Figures/PhasePortraits.png" width="500">
 1. To reproduce `Fig. 2` in the paper you should run `CostEvaluation.m`. The result should be the following:
-![Fig. 2](Figures/CostEvaluation.png =250x)
+<img src="Figures/CostEvaluation.png" width="500">
