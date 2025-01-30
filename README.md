@@ -48,6 +48,6 @@ cd InverseOptimal_HybridGame
 ```
 2. Open Matlab and make sure your `Current Folder` is this repository you just cloned.
 3. To reproduce `Fig. 1` in the paper you should run `PhasePortraits.m`. The result should be the following:
-<img src="Figures/PhasePortraits.png" width="100">
+<img src="Figures/PhasePortraits.png" width="500">
 1. To reproduce `Fig. 2` in the paper you should run `CostEvaluation.m`. The result should be the following:
 ![Fig. 2](Figures/CostEvaluation.png =250x)
