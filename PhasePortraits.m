@@ -1,17 +1,17 @@
 %--------------------------------------------------------------------------
 % Matlab M-file Project: Inverse-Optimal Safety Control for Hybrid Systems @  Hybrid Systems Laboratory (HSL),
-% Filename: main.m
+% Filename: PhasePortraits.m
 %--------------------------------------------------------------------------
 % Project: Example - Bouncing Ball with Disturbances as a
 %           Two-Player Zero-Sum Hybrid Game - Saddle Point Behavior
 % Author(s): Carlos Montenegro and Santiago Jimenez Leudo
 %--------------------------------------------------------------------------
 %--------------------------------------------------------------------------
-%   Make sure to install HyEQ Toolbox (Beta) v3.0.0.22 from
-%   https://www.mathworks.com/matlabcentral/fileexchange/102239-hybrid-equations-toolbox-beta
+%   Make sure to install HyEQ Toolbox v3.0.0.76 from
+%   https://www.mathworks.com/matlabcentral/fileexchange/41372-hybrid-equations-toolbox
 %   (View Version History)
 %   Copyright @ Hybrid Systems Laboratory (HSL),
-%   Revision: 0.0.0.2 Date: 01/24/2022 9:45:00
+%   Revision: 0.0.0.3 Date: 01/29/2025
 
 clear all; clc;
 rng("default");
