@@ -43,9 +43,9 @@ Having successfully installed the HyEQ Toolbox:
 ```bash
 git clone https://github.com/camonten/InverseOptimal_HybridGames.git
 ```
-1. Open Matlab and make sure your `Current Folder` is this repository you just cloned.
-2. To reproduce `Fig. 1` in the paper you should run `PhasePortraits.m`. The result should be the following:
+2. Open Matlab and make sure your `Current Folder` is this repository you just cloned.
+3. To reproduce `Fig. 1` in the paper you should run `PhasePortraits.m`. The result should be the following:
 <img src="Figures/PhasePortraits.png" width="500">
 
-1. To reproduce `Fig. 2` in the paper you should run `CostEvaluation.m`. The result should be the following:
+4. To reproduce `Fig. 2` in the paper you should run `CostEvaluation.m`. The result should be the following:
 <img src="Figures/CostEvaluation.png" width="450">
