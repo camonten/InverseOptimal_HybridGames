@@ -15,6 +15,10 @@ classdef BouncingBall < HybridSystem
         ell_gamma; % Legendre-Fenchel Transform
 
         lambdaD = 0.8; % Krstic \lambda cost disturbance
+        
+        % Boolean variables to activate/deactivate the filter and
+        % disturbance
+        actFilt; actDist;
     end
 
     % Define constant properties that cannot be modified (i.e., "immutable").
@@ -34,10 +38,11 @@ classdef BouncingBall < HybridSystem
 
     methods 
         %% Constructor
-        function obj = BouncingBall(B, rho, inv_rho, gamma, inv_dgamma)
+        function obj = BouncingBall(B, rho, inv_rho, gamma, ...
+                                            inv_dgamma, actFilt, actDist)
             % Validate CBF object
             obj.B = B;
-            validateattributes(B, {'BBControlBarrierFunction'}, {'nonempty'});
+            validateattributes(B, {'ControlBarrierFunction'}, {'nonempty'});
 
             obj.rho = rho;
             obj.inv_rho = inv_rho;
@@ -51,6 +56,9 @@ classdef BouncingBall < HybridSystem
             for func = {rho, inv_rho, gamma, inv_dgamma}
                 validateattributes(func{1}, {'function_handle'}, {'nonempty'});
             end
+
+            obj.actFilt = actFilt;
+            obj.actDist = actDist;
         end
 
         %% Other methods
@@ -94,7 +102,7 @@ classdef BouncingBall < HybridSystem
                 Rc = 0.5 * norm(Lfu1B)^2 / max(0, omegaC);
                 hat_kappaC1 = -0.5 * Lfu1B / Rc;
                 % Feedback law
-                kappaC1 = bar_kappaC1 + hat_kappaC1;
+                kappaC1 = bar_kappaC1 + hat_kappaC1*obj.actFilt;
 
                 % ------------------- Cost Evaluation ------------------- %
                 q1C = -(LfBkappaC1 - 0.25*norm(Lfu1B)^2/Rc + ...
@@ -109,7 +117,7 @@ classdef BouncingBall < HybridSystem
             %     qC = 0;
             % end
 
-            xdot = [f + fu1*kappaC1 + fu2*kappaC2; qC];
+            xdot = [f + fu1*kappaC1 + fu2*kappaC2*obj.actDist; qC];
         end
 
 
@@ -144,7 +152,7 @@ classdef BouncingBall < HybridSystem
             Rd = 0.5 * norm(BL1)^2 / max(0, omegaD);
             hat_kappaD1 = -0.5 * BL1 / Rd;
             % Feedback law
-            kappaD1 = bar_kappaD1 + hat_kappaD1;
+            kappaD1 = bar_kappaD1 + hat_kappaD1*obj.actFilt;
 
             % --------------------- Cost Evaluation --------------------- %
             q1D = -(obj.B.B( g + gu1 * bar_kappaD1) - obj.B.B([h; v]) - ...
@@ -156,7 +164,7 @@ classdef BouncingBall < HybridSystem
                     - obj.lambdaD * obj.gamma( norm(kappaD2) / obj.lambdaD));
 
             % Define the value of G(x).
-            xplus = [g + gu1*kappaD1 + gu2*kappaD2; J+qD];
+            xplus = [g + gu1*kappaD1 + gu2*kappaD2*obj.actDist; J+qD];
         end
 
         %%
